@@ -299,7 +299,11 @@ public class RNFirebaseNotifications extends ReactContextBaseJavaModule implemen
       return null;
     }
 
-    WritableMap notificationMap = Arguments.makeNativeMap(intent.getExtras());
+    Bundle extras = intent.getExtras();
+
+    extras.remove("profile"); // Xiaomi devices add profile property to Extras which leads to the app crash
+
+    WritableMap notificationMap = Arguments.makeNativeMap(extras);
     WritableMap notificationOpenMap = Arguments.createMap();
     notificationOpenMap.putString("action", intent.getAction());
     notificationOpenMap.putMap("notification", notificationMap);
