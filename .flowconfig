@@ -25,6 +25,9 @@
 # Ignore tests project
 .*/tests/.*
 
+[untyped]
+.*/node_modules/.*
+
 [include]
 
 [lints]
